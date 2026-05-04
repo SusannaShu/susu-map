@@ -1,0 +1,84 @@
+/* LayerToggle.css -- teal design system */
+
+.layerBar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 4px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.layerBar::-webkit-scrollbar {
+  display: none;
+}
+
+.layerPill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.layerPill:hover {
+  border-color: var(--color-primary-lighter);
+  color: var(--color-text);
+}
+
+.layerPill.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-lightest);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+/* Color-specific active states */
+.layerPill.active.allActive {
+  border-color: var(--color-primary);
+  background: var(--color-primary-lightest);
+  color: var(--color-primary-dark);
+}
+.layerPill.active.freeActive {
+  border-color: var(--color-layer-free);
+  background: var(--color-available-bg);
+  color: #065f46;
+}
+.layerPill.active.eventsActive {
+  border-color: var(--color-layer-events);
+  background: #ede9fe;
+  color: #5b21b6;
+}
+.layerPill.active.marketActive {
+  border-color: var(--color-layer-market);
+  background: var(--color-running-low-bg);
+  color: #92400e;
+}
+.layerPill.active.hangoutActive {
+  border-color: var(--color-layer-hangout);
+  background: var(--color-hangout-light);
+  color: var(--color-hangout-dark);
+}
+
+.pillDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pillCount {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.6;
+  min-width: 14px;
+  text-align: center;
+}

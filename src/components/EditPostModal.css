@@ -1,0 +1,232 @@
+.editPostOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: auto;
+}
+
+.editPostBackdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.editPostSheet {
+  position: relative;
+  background: var(--color-surface);
+  border-radius: 24px 24px 0 0;
+  padding: 0 20px 40px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+  animation: editSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes editSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.editPostHandle {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+  z-index: 2;
+  margin-bottom: 8px;
+}
+
+.editPostHandleBar {
+  width: 36px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--color-border);
+}
+
+.editPostHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  position: sticky;
+  top: 24px;
+  background: var(--color-surface);
+  z-index: 2;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.editPostHeaderTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.editPostCloseBtn {
+  background: var(--color-bg);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  cursor: pointer;
+}
+
+.editPostForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.editPostFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editPostLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  display: flex;
+  justify-content: space-between;
+}
+
+.editPostInput {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  color: var(--color-text);
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.editPostInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.editPostTextarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.editPhotoUpload {
+  background: var(--color-bg);
+  border: 2px dashed var(--color-border);
+  border-radius: 16px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--color-text-light);
+  transition: all 0.2s;
+}
+
+.editPhotoUpload:not(.hasImage):hover {
+  background: var(--color-surface);
+  border-color: var(--color-text-light);
+  color: var(--color-text);
+}
+
+.editPhotoUploadText {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.editPostCategoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+}
+
+.editPostCategoryPill {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.editPostCategoryPill.selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.editPostSubmit {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.editPostSubmit:active {
+  transform: scale(0.98);
+}
+
+.editPostErrorMsg {
+  background: #fef2f2;
+  color: #ef4444;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-top: 8px;
+}
+
+.editPostSuccessState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  gap: 16px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.editPostSuccessIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background: rgba(16, 185, 129, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

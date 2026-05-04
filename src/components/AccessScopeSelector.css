@@ -1,0 +1,82 @@
+/* AccessScopeSelector.css -- teal design system */
+
+.accessScopeGroup {
+  margin-bottom: 16px;
+}
+
+.accessScopeLabel {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.accessScopeOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.accessScopeBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: var(--transition-fast);
+  text-align: left;
+}
+
+.accessScopeBtn:hover:not(.disabled) {
+  border-color: var(--color-primary);
+}
+
+.accessScopeBtn.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-lightest);
+}
+
+.accessScopeBtn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scopeDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.scopeDot.public { background: var(--color-scope-public); }
+.scopeDot.school-only { background: var(--color-scope-school); }
+.scopeDot.college-only { background: var(--color-scope-org); }
+
+.scopeInfo {
+  flex: 1;
+}
+
+.scopeName {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.schoolDomain {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  font-weight: 400;
+}
+
+.scopeDesc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-top: 1px;
+}
+
+.accessScopeBtn.disabled .scopeDesc {
+  color: var(--color-running-low);
+}

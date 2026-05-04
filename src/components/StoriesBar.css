@@ -1,0 +1,258 @@
+/* StoriesBar.css -- teal design system */
+
+/* ---- Pin Stories Section (in BottomSheet) ---- */
+.pinStoriesSection {
+  margin: 12px 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.pinStoriesHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.pinStoriesLiveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-happening-now);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.pinStoriesRow {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.pinStoriesRow::-webkit-scrollbar { display: none; }
+
+.pinStoryThumb {
+  flex-shrink: 0;
+  width: 160px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.pinStoryThumb:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.pinStoryThumbImg {
+  width: 100%;
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+}
+
+.pinStoryThumbCaption {
+  padding: 6px 8px 2px;
+  font-size: 10px;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.storyTypeTag {
+  display: inline-block;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--color-primary-lightest);
+  color: var(--color-primary-dark);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.pinStoryThumbMeta {
+  padding: 2px 8px 4px;
+  font-size: 9px;
+  color: var(--color-text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.thumbAvatar {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: 9px;
+}
+
+.pinStoryThumbReactions {
+  padding: 0 8px 6px;
+  font-size: 9px;
+  color: var(--color-text-tertiary);
+  display: flex;
+  gap: 6px;
+}
+
+/* ---- Full Screen Story Viewer ---- */
+.storyViewerOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 200ms;
+}
+
+.storyProgress {
+  display: flex;
+  gap: 3px;
+  padding: 12px 12px 0;
+}
+
+.storyProgressBar {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.storyProgressFill {
+  height: 100%;
+  border-radius: 1px;
+  background: white;
+}
+
+.storyProgressFill.done {
+  width: 100% !important;
+}
+
+.storyProgressFill.active {
+  animation: storyProgress 5s linear forwards;
+}
+
+.storyHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.storyHeaderAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.storyHeaderInfo {
+  flex: 1;
+}
+
+.storyHeaderName {
+  color: white;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+
+.storyHeaderTime {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-xs);
+}
+
+.storyHeaderClose {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.storyImage {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.storyImageNav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  cursor: pointer;
+}
+
+.storyImageNav.left { left: 0; }
+.storyImageNav.right { right: 0; }
+
+.storyCaption {
+  padding: 16px;
+  color: white;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  width: 100%;
+}
+
+.storyCaptionLocation {
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.storyFooter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+}
+
+.storyReactionBtn {
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.storyReactionBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.storyReactionCount {
+  opacity: 0.7;
+  margin-left: 2px;
+}
+
+.storyCreditBadge {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: white;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}

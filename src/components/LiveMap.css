@@ -1,0 +1,304 @@
+/* LiveMap.css -- teal design system */
+
+.mapPage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Top bar ---- */
+.mapTopBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 12px 16px 8px;
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 247, 248, 0.97) 0%,
+    rgba(245, 247, 248, 0.92) 70%,
+    rgba(245, 247, 248, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.mapTopBarInner {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mapSearchRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 28px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-tertiary);
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px 12px 10px 36px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.searchInput::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.searchInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md), 0 0 0 3px rgba(0, 181, 173, 0.1);
+}
+
+.appLogo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+
+.appLogo:hover {
+  background: var(--color-primary-dark);
+}
+
+.appLogoText {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ---- Map container ---- */
+.mapContainer {
+  flex: 1;
+  position: relative;
+}
+
+.mapContainerInner {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Map pins ---- */
+.mapPin {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-surface);
+  border: 3px solid var(--color-surface);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  position: absolute; /* MUST be absolute for Mapbox markers */
+}
+
+.mapPin:hover {
+  box-shadow: var(--shadow-lg);
+  z-index: 5;
+}
+
+/* All status classes keep the same white border -- color is communicated
+   through the small badges (price, quantity, count) underneath instead of
+   coloring the entire ring. This reduces visual noise dramatically. */
+.mapPin.statusAvailable { border-color: var(--color-surface); }
+.mapPin.statusRunningLow { border-color: var(--color-surface); }
+.mapPin.statusGone { border-color: var(--color-surface); opacity: 0.5; }
+.mapPin.statusHappeningNow { border-color: var(--color-surface); }
+.mapPin.statusUpcoming { border-color: var(--color-surface); }
+.mapPin.layerMarket { border-color: var(--color-surface); }
+.mapPin.layerHangout { border-color: var(--color-surface); }
+
+/* Story ring -- the outer .hasStories div shows the gradient as
+   its background, acting as the ring. The inner .mapPinInner div
+   sits on top with the actual pin image, inset by 3px. */
+.mapPin.hasStories {
+  border: none;
+  background-image: var(--story-gradient) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.mapPinInner {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-surface);
+}
+
+/* Pin badges */
+.pinBadge,
+.pinPriceBadge,
+.pinHangoutBadge,
+.pinScrapedBadge,
+.pinStoryBadge {
+  position: absolute;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: var(--font-family);
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.pinBadge {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-running-low);
+  color: white;
+}
+
+.pinPriceBadge {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-layer-market);
+  color: white;
+}
+
+.pinHangoutBadge {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-layer-hangout);
+  color: white;
+}
+
+.pinScrapedBadge {
+  top: -4px;
+  right: -4px;
+  background: var(--color-primary);
+  color: white;
+  font-size: 8px;
+}
+
+.pinStoryBadge {
+  top: -6px;
+  right: -6px;
+  background: var(--color-happening-now);
+  color: white;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid white;
+}
+
+/* ---- Badges ---- */
+.mapLoadingBadge {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(0, 181, 173, 0.92);
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  animation: fadeIn var(--transition-base);
+  white-space: nowrap;
+}
+
+.mapOfflineBadge {
+  background: rgba(245, 158, 11, 0.92);
+}
+
+.happeningNowBadge {
+  position: absolute;
+  top: 140px;
+  right: 16px;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  animation: float 3s ease-in-out infinite;
+}
+
+.happeningNowDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-happening-now);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.timeFilterActiveBadge {
+  position: absolute;
+  top: 175px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--color-primary-lightest);
+  border: 1px solid var(--color-primary-lighter);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-primary-dark);
+  animation: fadeIn var(--transition-base);
+  white-space: nowrap;
+}
+
+.timeFilterClear {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.timeFilterClear:hover {
+  background: var(--color-primary-dark);
+}
